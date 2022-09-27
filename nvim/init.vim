@@ -11,6 +11,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'tmsvg/pear-tree'
 
 " Syntax highlighting extensions
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tomlion/vim-solidity'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -25,6 +26,13 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+" Linting
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvim-lua/plenary.nvim'
+
+" Git plugin
+Plug 'tpope/vim-fugitive'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -32,6 +40,7 @@ call plug#end()
 autocmd vimenter * ++nested colorscheme gruvbox
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 0
 
 " PREFERENCES
 set nocompatible            " disable compatibility to old-time vi
@@ -50,8 +59,7 @@ set wildmode=longest,list   " get bash-like tab completionscoc
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
-set clipboard=unnamedplus   " using system clipboard
-filetype plugin on
+" set clipboard=unnamedplus   " using system clipboard
 set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download language package)
 " set noswapfile            " disable creating swap file
@@ -61,15 +69,10 @@ set ttyfast                 " Speed up scrolling in Vim
 nmap <C-n> :NERDTreeToggle<CR>
 " <Ctrl-l> redraws the screen and removes search highlighting
 nnoremap <silent> <leader>c :nohl<CR>
-" Tab navigation
-nnoremap <tab> :tabnext<CR>
-nnoremap <S-tab> :tabprev<CR>
-nnoremap tn :tabnew<CR>
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
+" Buffer navigation
+nnoremap <tab> :bn<CR>
+nnoremap <S-tab> :bp<CR>
+nnoremap <leader>q :bd<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -79,7 +82,7 @@ nnoremap <C-\> :vsplit<CR>
 nnoremap <leader>r <C-w>r
 
 " CtrlP configurations
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/venv/*     " MacOSX/Linux
 
 
 " https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders
@@ -90,4 +93,9 @@ endif
 
 set completeopt=menu,menuone,noselect
 
+" NERDTree
+let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
+
 :lua require('lsp') 
+:lua require('linting')
+:lua require('treesitter')
