@@ -3,7 +3,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
@@ -32,6 +31,10 @@ Plug 'nvim-lua/plenary.nvim'
 
 " Git plugin
 Plug 'tpope/vim-fugitive'
+
+" Fuzzy search in file
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -81,7 +84,9 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-\> :vsplit<CR>
 nnoremap <leader>r <C-w>r
 
-" CtrlP configurations
+" Fzf configurations
+nnoremap <C-p> :Files<CR> 
+nnoremap <S-p> :Ag<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/venv/*     " MacOSX/Linux
 
 

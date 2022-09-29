@@ -8,6 +8,7 @@ Requires:
 - pyright
 - autopep8
 - pycodestyle
+- Ag, the silver searcher (used by fzf fuzzy search)
 
 Treesitter install:
 - Run `:TSInstall {language}`
