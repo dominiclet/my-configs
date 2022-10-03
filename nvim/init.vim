@@ -11,9 +11,6 @@ Plug 'tmsvg/pear-tree'
 
 " Syntax highlighting extensions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'tomlion/vim-solidity'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
 " LSP-related plugins
 Plug 'neovim/nvim-lspconfig'
