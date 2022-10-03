@@ -98,6 +98,10 @@ set completeopt=menu,menuone,noselect
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
+" Merge conflict GitDiff configurations
+nnoremap gh :diffget //2<CR>
+nnoremap gl :diffget //3<CR>
+
 :lua require('lsp') 
 :lua require('linting')
 :lua require('treesitter')
