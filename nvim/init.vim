@@ -6,14 +6,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'tmsvg/pear-tree'
 
 " Syntax highlighting extensions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'tomlion/vim-solidity'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " LSP-related plugins
 Plug 'neovim/nvim-lspconfig'
@@ -100,6 +97,10 @@ set completeopt=menu,menuone,noselect
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
+
+" Merge conflict bindings
+nnoremap gh :diffget //2 <CR>
+nnoremap gl :diffget //3 <CR>
 
 :lua require('lsp') 
 :lua require('linting')
