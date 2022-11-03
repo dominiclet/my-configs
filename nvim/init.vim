@@ -40,7 +40,8 @@ call plug#end()
 autocmd vimenter * ++nested colorscheme gruvbox
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_buffers = 0
 
 " PREFERENCES
 set nocompatible            " disable compatibility to old-time vi
@@ -69,16 +70,19 @@ set ttyfast                 " Speed up scrolling in Vim
 nmap <C-n> :NERDTreeToggle<CR>
 " <Ctrl-l> redraws the screen and removes search highlighting
 nnoremap <silent> <leader>c :nohl<CR>
-" Buffer navigation
-nnoremap <tab> :bn<CR>
-nnoremap <S-tab> :bp<CR>
-nnoremap <leader>q :bd<CR>
+" Tab navigation
+nnoremap tn :tabnew<CR>
+nnoremap <tab> :tabnext<CR>
+nnoremap <S-tab> :tabprev<CR>
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-\> :vsplit<CR>
+" Split window navigation
+nnoremap s <ESC>
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sv :vsplit<CR>
+nnoremap ss :split<CR>
 nnoremap <leader>r <C-w>r
 
 " Fzf configurations
