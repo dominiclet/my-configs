@@ -10,7 +10,6 @@ Plug 'tmsvg/pear-tree'
 
 " Syntax highlighting extensions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " LSP-related plugins
 Plug 'neovim/nvim-lspconfig'
@@ -22,9 +21,12 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'Vimjas/vim-python-pep8-indent'
+
 " Linting
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Git plugin
 Plug 'tpope/vim-fugitive'
@@ -71,7 +73,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 " <Ctrl-l> redraws the screen and removes search highlighting
 nnoremap <silent> <leader>c :nohl<CR>
 " Tab navigation
-nnoremap tn :tabnew<CR>
+nnoremap te :tabedit<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprev<CR>
 
@@ -101,6 +103,7 @@ set completeopt=menu,menuone,noselect
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
+let NERDTreeQuitOnOpen = 1
 
 " Merge conflict bindings
 nnoremap gh :diffget //2 <CR>

@@ -74,7 +74,7 @@ cmp.setup({
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
-      { name = 'buffer' },
+      -- { name = 'buffer' },
     })
 })
 
@@ -112,6 +112,19 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+lspconfig = require "lspconfig"
+util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilties, 
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+}
+
 require('lspconfig')['pyright'].setup{
     capabilities = capabilities, 
     on_attach = on_attach,
