@@ -3,10 +3,13 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'tmsvg/pear-tree'
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'jacoborus/tender.vim'
 
 " Syntax highlighting extensions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -39,11 +42,18 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " THEMES AND APPEARANCES
-autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme tender
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 0
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+" Lightline
+let g:lightline = {'colorscheme': 'tender'}
 
 " PREFERENCES
 set nocompatible            " disable compatibility to old-time vi
@@ -74,8 +84,8 @@ nmap <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>c :nohl<CR>
 " Tab navigation
 nnoremap te :tabedit<CR>
-nnoremap <tab> :tabnext<CR>
-nnoremap <S-tab> :tabprev<CR>
+nnoremap tn :tabnext<CR>
+nnoremap tp :tabprev<CR>
 
 " Split window navigation
 nnoremap s <ESC>
@@ -91,13 +101,6 @@ nnoremap <leader>r <C-w>r
 nnoremap <C-p> :Files<CR> 
 nnoremap <S-p> :Ag<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/venv/*     " MacOSX/Linux
-
-
-" https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 
 set completeopt=menu,menuone,noselect
 

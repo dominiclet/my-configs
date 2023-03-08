@@ -106,7 +106,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -121,12 +121,12 @@ lspconfig.gopls.setup {
     filetypes = {"go", "gomod"},
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilties, 
+    capabilities = capabilities,
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 }
 
 require('lspconfig')['pyright'].setup{
-    capabilities = capabilities, 
+    capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
     settings = {
@@ -150,4 +150,9 @@ require('lspconfig')['rust_analyzer'].setup{
     settings = {
       ["rust-analyzer"] = {}
     }
+}
+lspconfig.lua_ls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
 }
