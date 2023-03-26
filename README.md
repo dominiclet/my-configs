@@ -9,6 +9,7 @@ Requires:
 - autopep8
 - pycodestyle
 - Ag, the-silver-searcher (used by fzf fuzzy search)
+- Might require luarocks
 
 Treesitter install:
 - Run `:TSInstall {language}`

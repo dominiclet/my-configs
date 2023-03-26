@@ -14,15 +14,24 @@ Plug 'jacoborus/tender.vim'
 " Syntax highlighting extensions
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" LSP-related plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" LSP Support
+Plug 'neovim/nvim-lspconfig'             " Required
+Plug 'williamboman/mason.nvim'           " Optional
+Plug 'williamboman/mason-lspconfig.nvim' " Optional
+
+" Autocompletion Engine
+Plug 'hrsh7th/nvim-cmp'         " Required
+Plug 'hrsh7th/cmp-nvim-lsp'     " Required
+Plug 'hrsh7th/cmp-buffer'       " Optional
+Plug 'hrsh7th/cmp-path'         " Optional
+Plug 'saadparwaiz1/cmp_luasnip' " Optional
+Plug 'hrsh7th/cmp-nvim-lua'     " Optional
+
+"  Snippets
+Plug 'L3MON4D3/LuaSnip'             " Required
+Plug 'rafamadriz/friendly-snippets' " Optional
+
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v1.x'}
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -68,6 +77,7 @@ set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number                  " add line numbers
+set wildmenu
 set wildmode=longest,list   " get bash-like tab completionscoc
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
