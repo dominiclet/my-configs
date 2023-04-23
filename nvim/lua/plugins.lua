@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
     -- Aesthetics
     use 'itchyny/lightline.vim'
     use 'jacoborus/tender.vim'
+    use { 'catppuccin/nvim', name = "catppuccin" }
 
     -- Bracket/parenthesis pairer
     use 'tmsvg/pear-tree'
@@ -28,11 +29,15 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
 
+    use 'fatih/vim-go'
+
     -- Autocompletion engine
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
     use 'saadparwaiz1/cmp_luasnip'
     use 'hrsh7th/cmp-nvim-lua'
 

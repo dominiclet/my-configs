@@ -6,7 +6,9 @@ require('nvimtree-config')
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.cmd('colorscheme tender')
+
+-- Colorscheme
+vim.cmd.colorscheme "catppuccin-mocha"
 
 ----- Preferences -----
 vim.cmd [[set mouse=a]]
@@ -26,6 +28,8 @@ opt.autoindent = true
 opt.number = true
 opt.wildmenu = true
 opt.ttyfast = true
+
+vim.api.nvim_set_option("clipboard","unnamed")
 
 ----- Keymaps -----
 function map(mode, shortcut, command)
