@@ -4,11 +4,14 @@ require('treesitter')
 require('telescopeconfig')
 require('nvimtree-config')
 
+-- Leader key
+vim.g.mapleader = '\\'
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Colorscheme
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "kanagawa-dragon"
 
 ----- Preferences -----
 vim.cmd [[set mouse=a]]
@@ -25,6 +28,7 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.autoindent = true
+opt.expandtab = true
 opt.number = true
 opt.wildmenu = true
 opt.ttyfast = true

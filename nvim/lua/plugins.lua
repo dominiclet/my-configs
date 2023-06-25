@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
     use 'itchyny/lightline.vim'
     use 'jacoborus/tender.vim'
     use { 'catppuccin/nvim', name = "catppuccin" }
+    use "rebelot/kanagawa.nvim"
 
     -- Bracket/parenthesis pairer
     use 'tmsvg/pear-tree'
@@ -56,4 +57,7 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+
+    -- JSX indent and styling
+    use 'maxmellon/vim-jsx-pretty'
 end)
