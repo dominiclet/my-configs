@@ -11,10 +11,17 @@ return require('packer').startup(function(use)
     }
 
     -- Aesthetics
-    use 'itchyny/lightline.vim'
     use 'jacoborus/tender.vim'
     use { 'catppuccin/nvim', name = "catppuccin" }
     use "rebelot/kanagawa.nvim"
+    use 'navarasu/onedark.nvim'
+
+    -- Tabline / Statusline
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     -- Bracket/parenthesis pairer
     use 'tmsvg/pear-tree'

@@ -3,6 +3,7 @@ require('lsp')
 require('treesitter')
 require('telescopeconfig')
 require('nvimtree-config')
+require('status-tab-line')
 
 -- Leader key
 vim.g.mapleader = '\\'
@@ -11,7 +12,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Colorscheme
-vim.cmd.colorscheme "kanagawa-dragon"
+require('onedark').load()
 
 ----- Preferences -----
 vim.cmd [[set mouse=a]]
@@ -48,6 +49,10 @@ map('n', '<leader>c', '<cmd>nohl<cr>')
 map('n', 'te', '<cmd>tabedit<cr>')
 map('n', 'tn', '<cmd>tabnext<cr>')
 map('n', 'tp', '<cmd>tabprev<cr>')
+-- Buffer navigation
+map('n', '<C-l>', '<cmd>bnext<cr>')
+map('n', '<C-h>', '<cmd>bprev<cr>')
+map('n', '<C-x>', '<cmd>bdelete<cr>')
 -- Split window navigation
 map('n', 's', '<ESC>')
 map('n', 'sh', '<C-w>h')
@@ -66,4 +71,3 @@ vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<S-p>', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
