@@ -67,4 +67,7 @@ return require('packer').startup(function(use)
 
     -- JSX indent and styling
     use 'maxmellon/vim-jsx-pretty'
+
+    -- Undo
+    use 'mbbill/undotree'
 end)
