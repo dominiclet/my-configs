@@ -4,6 +4,7 @@ require('treesitter')
 require('telescopeconfig')
 require('nvimtree-config')
 require('status-tab-line')
+require('marks-config')
 
 -- Leader key
 vim.g.mapleader = '\\'
@@ -46,13 +47,13 @@ map('n', '<C-n>', '<cmd>NvimTreeToggle<cr>')
 -- Remove search highlighting
 map('n', '<leader>c', '<cmd>nohl<cr>')
 -- Tab navigation
-map('n', 'te', '<cmd>tabedit<cr>')
+map('n', 'te', '<cmd>tab split<cr>')
 map('n', 'tn', '<cmd>tabnext<cr>')
 map('n', 'tp', '<cmd>tabprev<cr>')
 -- Buffer navigation
 map('n', 'gn', '<cmd>BufferLineCycleNext<cr>')
 map('n', 'gp', '<cmd>BufferLineCyclePrev<cr>')
-map('n', '<C-x>', '<cmd>bdelete<cr>')
+map('n', 'gx', '<cmd>bdelete<cr>')
 map('n', 'gb', '<cmd>BufferLinePick<cr>')
 map('n', '<leader>dl', '<cmd>BufferLineCloseRight<cr>')
 map('n', '<leader>dh', '<cmd>BufferLineCloseLeft<cr>')
@@ -72,11 +73,13 @@ map('n', '<leader>r', '<C-w>r')
 -- Merge conflict Fugitive git
 map('n', 'gh', '<cmd>diffget //2<cr>')
 map('n', 'gl', '<cmd>diffget //3<cr>')
+
 -- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<S-p>', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<C-b>', builtin.buffers, {})
+vim.keymap.set('n', '<C-m>', builtin.marks, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Undo tree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)

@@ -70,4 +70,7 @@ return require('packer').startup(function(use)
 
     -- Undo
     use 'mbbill/undotree'
+
+    -- Marks
+    use 'chentoast/marks.nvim'
 end)
