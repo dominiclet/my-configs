@@ -13,7 +13,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Colorscheme
-require('onedark').load()
+vim.o.background = "dark"
+vim.cmd([[colorscheme gruvbox]])
 
 ----- Preferences -----
 vim.cmd [[set mouse=a]]

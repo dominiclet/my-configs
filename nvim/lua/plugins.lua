@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
     }
 
     -- Aesthetics
+    use 'ellisonleao/gruvbox.nvim'
     use 'jacoborus/tender.vim'
     use { 'catppuccin/nvim', name = "catppuccin" }
     use "rebelot/kanagawa.nvim"
@@ -33,6 +34,7 @@ return require('packer').startup(function(use)
     }
 
     -- LSP support
+    use 'onsails/lspkind.nvim'
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
