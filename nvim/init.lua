@@ -5,6 +5,7 @@ require('telescopeconfig')
 require('nvimtree-config')
 require('status-tab-line')
 require('harpoon-config')
+require('leap-config')
 
 -- Leader key
 vim.g.mapleader = '\\'

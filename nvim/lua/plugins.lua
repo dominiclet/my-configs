@@ -75,4 +75,7 @@ return require('packer').startup(function(use)
 
     -- Harpoon
     use 'ThePrimeagen/harpoon'
+
+    -- Motion
+    use 'ggandor/leap.nvim'
 end)
