@@ -6,6 +6,7 @@ require('nvimtree-config')
 require('status-tab-line')
 require('harpoon-config')
 require('leap-config')
+require('diffview-config')
 
 -- Leader key
 vim.g.mapleader = '\\'

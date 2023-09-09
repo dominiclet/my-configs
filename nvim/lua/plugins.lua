@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
 
     -- Git plugin
     use 'tpope/vim-fugitive'
+    use 'sindrets/diffview.nvim'
 
     -- Telescope
     use {
