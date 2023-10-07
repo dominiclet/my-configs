@@ -72,7 +72,7 @@ map('n', 'gl', '<cmd>diffget //3<cr>')
 -- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 vim.keymap.set('n', '<C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Undo tree
