@@ -1,4 +1,4 @@
 return {
-  "sindrets/diffview.nvim",
-  "vimwiki/vimwiki"
+    "sindrets/diffview.nvim",
+    "vimwiki/vimwiki",
 }

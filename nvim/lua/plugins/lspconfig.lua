@@ -40,7 +40,7 @@ return {
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
             vim.keymap.set('n', 'gr', builtin.lsp_references, bufopts)
-            vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+            vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
         end
 
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -77,6 +77,8 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-j>'] = cmp.mapping.select_next_item(),
+                ['<C-k>'] = cmp.mapping.select_prev_item(),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort(),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -146,6 +148,11 @@ return {
         }
 
         lspconfig.cssls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+
+        lspconfig.tsserver.setup {
             capabilities = capabilities,
             on_attach = on_attach,
         }

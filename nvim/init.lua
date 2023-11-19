@@ -1,5 +1,5 @@
 -- Leader key
-vim.g.mapleader = '\\'
+vim.g.mapleader = " "
 
 -- Bootstrap lazy nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
