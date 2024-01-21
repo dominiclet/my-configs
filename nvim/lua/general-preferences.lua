@@ -25,8 +25,6 @@ function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
--- Nvim tree
-map('n', '<C-n>', '<cmd>NvimTreeToggle<cr>')
 -- Remove search highlighting
 map('n', '<leader>c', '<cmd>nohl<cr>')
 -- Tab navigation
