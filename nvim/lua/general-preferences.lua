@@ -17,6 +17,7 @@ opt.expandtab = true
 opt.number = true
 opt.wildmenu = true
 opt.ttyfast = true
+opt.relativenumber = true
 
 vim.api.nvim_set_option("clipboard","unnamed")
 
@@ -31,5 +32,5 @@ map('n', '<leader>c', '<cmd>nohl<cr>')
 map('n', 'te', '<cmd>tab split<cr>')
 map('n', 'tn', '<cmd>tabnext<cr>')
 map('n', 'tp', '<cmd>tabprev<cr>')
--- Buffer cleaning
-map('n', '<leader>b', '<cmd>%bd|e#|bd#<cr>')
+
+map('i', 'jk', '<esc>')
