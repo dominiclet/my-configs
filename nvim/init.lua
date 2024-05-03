@@ -17,4 +17,4 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 require("general-preferences")
-
+require("resize")

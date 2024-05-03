@@ -34,3 +34,6 @@ map('n', 'tn', '<cmd>tabnext<cr>')
 map('n', 'tp', '<cmd>tabprev<cr>')
 
 map('i', 'jk', '<esc>')
+
+map('n', 'H', '^')
+map('n', 'L', '$')
