@@ -18,6 +18,7 @@ opt.number = true
 opt.wildmenu = true
 opt.ttyfast = true
 opt.relativenumber = true
+opt.cursorline = true
 
 vim.api.nvim_set_option("clipboard","unnamed")
 
