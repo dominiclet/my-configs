@@ -20,7 +20,9 @@ return {
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-    vim.keymap.set('n', '<leader>d', builtin.diagnostics, opts)
+    vim.keymap.set('n', '<leader>d', function()
+        builtin.diagnostics({bufnr = 0})
+    end, opts)
 
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
