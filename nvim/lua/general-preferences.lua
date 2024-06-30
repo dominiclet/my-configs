@@ -20,11 +20,11 @@ opt.ttyfast = true
 opt.relativenumber = true
 opt.cursorline = true
 
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 ----- Keymaps -----
 function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+    vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- Remove search highlighting
@@ -36,7 +36,14 @@ map('n', 'tp', '<cmd>tabprev<cr>')
 
 map('i', 'jk', '<esc>')
 
-map('n', 'H', '^')
-map('n', 'L', '$')
-map('v', 'H', '^')
-map('v', 'L', '$')
+map({ 'n', 'v' }, 'H', '^')
+map({ 'n', 'v' }, 'L', '$')
+
+-- Quickfix list
+map('n', '<leader>q', '<nop>')
+map('n', '<leader>qj', '<cmd>cnext<cr>')
+map('n', '<leader>qk', '<cmd>cprev<cr>')
+map('n', '<leader>qq', '<cmd>cclose<cr>')
+
+-- Easier save
+map('n', '<leader>w', '<cmd>w<cr>')

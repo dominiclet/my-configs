@@ -6,6 +6,7 @@ return {
     config = function()
         require("mason").setup()
         local lspconfig = require("mason-lspconfig")
+        require('lsp-zero').extend_lspconfig()
         lspconfig.setup({
             ensure_installed = {
                 "lua_ls",
@@ -15,6 +16,11 @@ return {
                 "gopls"
             },
             automatic_installation = true,
+            handlers = {
+                function(server_name)
+                    require('lspconfig')[server_name].setup({})
+                end,
+            }
         })
     end,
 }
