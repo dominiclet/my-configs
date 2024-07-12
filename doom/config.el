@@ -78,7 +78,11 @@
 (with-eval-after-load 'evil-maps
   (define-key evil-motion-state-map (kbd "SPC") nil)
   (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "TAB") nil))
+  (define-key evil-motion-state-map (kbd "TAB") nil)
+  (define-key evil-normal-state-map (kbd "g r") #'+lookup/references)
+  (define-key evil-normal-state-map (kbd "L") #'evil-end-of-line)
+  (define-key evil-normal-state-map (kbd "H") #'evil-beginning-of-line))
+
 
 ;; RETURN follow links in org-mode files
 (setq org-return-follows-link t)
@@ -90,3 +94,4 @@
 ;; Enable treesitter
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
