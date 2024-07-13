@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -81,7 +81,7 @@
   (define-key evil-motion-state-map (kbd "TAB") nil)
   (define-key evil-normal-state-map (kbd "g r") #'+lookup/references)
   (define-key evil-normal-state-map (kbd "L") #'evil-end-of-line)
-  (define-key evil-normal-state-map (kbd "H") #'evil-beginning-of-line))
+  (define-key evil-normal-state-map (kbd "H") #'evil-first-non-blank))
 
 
 ;; RETURN follow links in org-mode files
@@ -95,3 +95,7 @@
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
+;; LSP
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-sideline-show-diagnostics t))
