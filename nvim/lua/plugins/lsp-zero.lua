@@ -15,7 +15,7 @@ return {
         lsp_zero.on_attach(function(client, bufnr)
             lsp_zero.default_keymaps({buffer = bufnr})
 
-            vim.keymap.set({'n', 'i'}, '<C-i>', vim.lsp.buf.signature_help, {buffer = bufnr})
+            vim.keymap.set({'n', 'i'}, '<C-l>', vim.lsp.buf.signature_help, {buffer = bufnr})
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {buffer = bufnr})
             vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, {buffer = bufnr})
             vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {buffer = bufnr})

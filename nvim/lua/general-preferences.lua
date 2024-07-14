@@ -40,10 +40,9 @@ map({ 'n', 'v' }, 'H', '^')
 map({ 'n', 'v' }, 'L', '$')
 
 -- Quickfix list
-map('n', '<leader>q', '<nop>')
-map('n', '<leader>qj', '<cmd>cnext<cr>')
-map('n', '<leader>qk', '<cmd>cprev<cr>')
-map('n', '<leader>qq', '<cmd>cclose<cr>')
+map('n', 'zj', '<cmd>cnext<cr>')
+map('n', 'zk', '<cmd>cprev<cr>')
+map('n', 'zc', '<cmd>cclose<cr>')
 
 -- Easier save
 map('n', '<leader>w', '<cmd>w<cr>')
