@@ -4,9 +4,9 @@ return {
         "williamboman/mason-lspconfig.nvim",
     },
     config = function()
+        require('lsp-zero').extend_lspconfig()
         require("mason").setup()
         local lspconfig = require("mason-lspconfig")
-        require('lsp-zero').extend_lspconfig()
         lspconfig.setup({
             ensure_installed = {
                 "lua_ls",
