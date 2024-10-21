@@ -27,6 +27,7 @@ return {
             sources = {
                 {name = 'nvim_lsp'},
                 {name = 'buffer'},
+                {name = 'orgmode'}
             },
             formatting = cmp_format,
             mapping = cmp.mapping.preset.insert({
