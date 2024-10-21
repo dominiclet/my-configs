@@ -44,5 +44,6 @@ map('n', 'zj', '<cmd>cnext<cr>')
 map('n', 'zk', '<cmd>cprev<cr>')
 map('n', 'zc', '<cmd>cclose<cr>')
 
--- Easier save
+-- Easier save and quit
 map('n', '<leader>w', '<cmd>w<cr>')
+map('n', '<leader>q', '<cmd>q<cr>')
