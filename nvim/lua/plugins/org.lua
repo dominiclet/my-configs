@@ -7,7 +7,8 @@ return {
         require('orgmode').setup({
             org_agenda_files = '~/notes/**/*',
             org_default_notes_file = '~/notes/refile.org',
-            org_startup_indented = true
+            org_startup_indented = true,
+            org_startup_folded = "content"
         })
 
         -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
