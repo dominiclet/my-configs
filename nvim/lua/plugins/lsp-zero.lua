@@ -37,7 +37,7 @@ return {
                 ['<C-k>'] = cmp.mapping.select_prev_item(),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort(),
-                ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
             })
         })
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
