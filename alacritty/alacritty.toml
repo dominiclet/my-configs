@@ -1,3 +1,11 @@
 [font]
     normal = { family = "FiraCode Nerd Font", style = "Regular" }
     size = 12.5
+[window]
+    padding = { x = 1, y = 1 }
+    dynamic_padding = true
+
+[[keyboard.bindings]]
+    chars = "\u001B[13;2u"
+    key = "Return"
+    mods = "Shift"
