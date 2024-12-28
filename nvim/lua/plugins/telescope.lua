@@ -14,6 +14,9 @@ return {
                         ["<C-d>"] = actions.delete_buffer
                     },
                 },
+                file_ignore_patterns = {
+                    "node_modules"
+                }
             }
         }
 
