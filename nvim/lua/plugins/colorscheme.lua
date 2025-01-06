@@ -7,7 +7,7 @@ return {
         -- directly inside the plugin declaration.
         vim.g.gruvbox_material_background = 'medium'
         vim.g.gruvbox_material_enable_bold = true
-        vim.g.gruvbox_material_enable_italic = true
+        vim.g.gruvbox_material_enable_italic = false
         vim.cmd.colorscheme('gruvbox-material')
     end
 }
