@@ -76,13 +76,25 @@
 ;; they are implemented.
 
 (with-eval-after-load 'evil-maps
-  (define-key evil-motion-state-map (kbd "SPC") nil)
-  (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "TAB") nil)
-  (define-key evil-normal-state-map (kbd "g r") #'+lookup/references)
   (define-key evil-normal-state-map (kbd "L") #'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "H") #'evil-first-non-blank))
 
+(map! :after evil
+      :map evil-normal-state-local-map
+      :desc "Save buffer"
+      :leader
+      "w" #'save-buffer)
+
+(map! :after evil
+      :map evil-normal-state-map
+      :desc "Quit buffer"
+      :leader
+      "q" #'evil-quit)
+
+(map! :after evil
+      :map evil-normal-state-map
+      :desc "open treemacs"
+      "C-n" #'treemacs)
 
 ;; RETURN follow links in org-mode files
 (setq org-return-follows-link t)
