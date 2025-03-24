@@ -16,8 +16,14 @@ return {
                 },
                 file_ignore_patterns = {
                     "node_modules"
-                }
+                },
+            },
+            pickers = {
+                find_files = {
+                    -- theme = "ivy"
+                },
             }
+
         }
 
         local builtin = require('telescope.builtin')
