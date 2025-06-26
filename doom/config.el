@@ -32,7 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set doom-theme' or manually load a theme with the
 ;; load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-nord)
+;; (setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to nil', line
 ;; numbers are disabled. For relative line numbers, set this to relative'.
@@ -75,31 +76,22 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(with-eval-after-load 'evil-maps
-  (define-key evil-normal-state-map (kbd "L") #'evil-end-of-line)
-  (define-key evil-normal-state-map (kbd "H") #'evil-first-non-blank))
+(map! :nv "L" #'evil-last-non-blank)
+(map! :nv "H" #'evil-first-non-blank)
+(map! :leader :n :desc "Save buffer" "w" #'save-buffer)
+(map! :desc "Quit buffer" :leader :n "q" #'evil-quit)
 
-(map! :after evil
-      :map evil-normal-state-local-map
-      :desc "Save buffer"
-      :leader
-      "w" #'save-buffer)
+;; Override which-key descriptions here
+(after! which-key
+  (push '(("\\`SPC w\\'") nil . "Save buffer") which-key-replacement-alist)
+  (push '(("\\`SPC q\\'") nil . "Quit buffer") which-key-replacement-alist)
+  )
 
-(map! :after evil
-      :map evil-normal-state-map
-      :desc "Quit buffer"
-      :leader
-      "q" #'evil-quit)
-
-(map! :after evil
-      :map evil-normal-state-map
-      :desc "open treemacs"
-      "C-n" #'treemacs)
 
 ;;(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;; JetBrainsMonoNL Nerd Font Mono
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 22))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 24))
 
 ;; Enable treesitter
 (global-tree-sitter-mode)
@@ -136,8 +128,8 @@
   (lsp-ui-doc-show-with-cursor nil)
   (lsp-ui-doc-show-with-mouse 't)
   (lsp-enable-symbol-highlighting nil)
-  (lsp-headerline-breadcrumb-enable t)
-  (lsp-headerline-breadcrumb-segments '(project file symbols))
+  ;; (lsp-headerline-breadcrumb-enable t)
+  ;; (lsp-headerline-breadcrumb-segments '(project file symbols))
   (lsp-use-plists t)
   (lsp-enable-file-watchers nil)
   (read-process-output-max (* 8 1024 1024)) ;; 3MB)
