@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set doom-theme' or manually load a theme with the
 ;; load-theme' function. This is the default:
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-moonlight)
 ;; (setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to nil', line
@@ -91,16 +91,15 @@
 ;;(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;; JetBrainsMonoNL Nerd Font Mono
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 24))
+(setq doom-font (font-spec :family "JetBrainsMonoNL Nerd Font Mono" :size 24))
 
 ;; Enable treesitter
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
-(use-package! corfu
-  :custom
-  (corfu-auto-delay 0.001)
-  (corfu-auto-prefix 1))
+(after! corfu
+  (setq corfu-auto-delay 0.01)
+  (setq corfu-auto-prefix 1))
 
 ;; LSP
 (use-package! lsp-mode
@@ -174,3 +173,6 @@
 
 (after! lsp-ui
   (setq lsp-ui-doc-enable t))
+
+(custom-set-faces
+ '(tree-sitter-hl-face:property ((t (:inherit font-lock-constant-face)))))
