@@ -76,6 +76,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Unmaps
+;; C-j creating newline and C-k deleting rest of line is very annoying
+(map! :g
+      "C-k" nil
+      "C-j" nil)
+
 (map! :nv "L" #'evil-last-non-blank)
 (map! :nv "H" #'evil-first-non-blank)
 (map! :leader :n :desc "Save buffer" "w" #'save-buffer)
