@@ -83,10 +83,11 @@
 
 ;; Override which-key descriptions here
 (after! which-key
-  (push '(("\\`SPC w\\'") nil . "Save buffer") which-key-replacement-alist)
-  (push '(("\\`SPC q\\'") nil . "Quit buffer") which-key-replacement-alist)
+  (push '(("\`SPC w\'") nil . "Save buffer") which-key-replacement-alist)
+  (push '(("\`SPC q\'") nil . "Quit buffer") which-key-replacement-alist)
   )
 
+(load! "repeatable-resize")
 
 ;;(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
@@ -176,3 +177,4 @@
 
 (custom-set-faces
  '(tree-sitter-hl-face:property ((t (:inherit font-lock-constant-face)))))
+
