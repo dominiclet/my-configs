@@ -86,12 +86,11 @@
 (map! :nv "H" #'evil-first-non-blank)
 (map! :leader :n :desc "Save buffer" "w" #'save-buffer)
 (map! :desc "Quit buffer" :leader :n "q" #'evil-quit)
-
-;; Override which-key descriptions here
-(after! which-key
-  (push '(("\`SPC w\'") nil . "Save buffer") which-key-replacement-alist)
-  (push '(("\`SPC q\'") nil . "Quit buffer") which-key-replacement-alist)
-  )
+(map! :nviemg "C-n" #'+treemacs/toggle)
+(map! :leader
+      :prefix "p"
+      :desc "Search project"
+      "g" #'+default/search-project)
 
 (load! "repeatable-resize")
 

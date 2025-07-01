@@ -35,10 +35,9 @@
    nil
    repeatable-resize-timeout))
 
-(map! :n
-      :prefix "C-w"
-      "<" #'+my/repeatable-shrink-window-horizontally
-      ">" #'+my/repeatable-enlarge-window-horizontally)
+(map! :prefix "C-w"
+      :n "<" #'+my/repeatable-shrink-window-horizontally
+      :n ">" #'+my/repeatable-enlarge-window-horizontally)
 
 (provide 'repeatable-resize)
 ;;; repeatable-resize.el ends here
