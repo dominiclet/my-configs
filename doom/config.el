@@ -80,6 +80,10 @@
 
 ;; Unmaps
 ;; C-j creating newline and C-k deleting rest of line is very annoying
+
+(after! evil-escape
+  (setq evil-escape-key-sequence "jk"))
+
 (map! :g
       "C-k" nil
       "C-j" nil)
@@ -93,6 +97,7 @@
       :prefix "p"
       :desc "Search project"
       "g" #'+default/search-project)
+(map! :n "g r" #'+lookup/references)
 
 (load! "repeatable-resize")
 
