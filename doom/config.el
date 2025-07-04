@@ -111,8 +111,9 @@
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 (after! corfu
-  (setq corfu-auto-delay 0.01)
-  (setq corfu-auto-prefix 1))
+  (setq corfu-auto-delay 0.001)
+  (setq corfu-auto-prefix 1)
+  (setq corfu-preselect 'first))
 
 ;; LSP
 (use-package! lsp-mode
@@ -183,9 +184,6 @@
         orig-result)))
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
   )
-
-(after! lsp-ui
-  (setq lsp-ui-doc-enable t))
 
 (custom-set-faces
  '(tree-sitter-hl-face:property ((t (:inherit font-lock-constant-face)))))
