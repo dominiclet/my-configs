@@ -87,6 +87,8 @@
 (map! :g
       "C-k" nil
       "C-j" nil)
+(map! :n "C-a" #'evil-numbers/inc-at-pt-incremental)
+(map! :n "C-x" #'evil-numbers/dec-at-pt-incremental)
 
 (map! :nv "L" #'evil-last-non-blank)
 (map! :nv "H" #'evil-first-non-blank)
@@ -103,6 +105,15 @@
 (map! :leader :n "TAB h" '+workspace/switch-left)
 (map! :leader :n "TAB l" '+workspace/switch-right)
 
+;; Harpoon
+(map! :leader :n "h h" 'harpoon-toggle-quick-menu)
+(map! :leader :n "h a" 'harpoon-add-file)
+(map! :leader :n "h D" 'harpoon-clear)
+(map! :leader :n "h 1" 'harpoon-go-to-1)
+(map! :leader :n "h 2" 'harpoon-go-to-2)
+(map! :leader :n "h 3" 'harpoon-go-to-3)
+(map! :leader :n "h 4" 'harpoon-go-to-4)
+
 (load! "repeatable-resize")
 
 ;;(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
@@ -116,7 +127,9 @@
 
 (after! corfu
   (setq corfu-auto-delay 0.001)
-  (setq corfu-auto-prefix 1)
+  (setq corfu-auto-prefix 1))
+
+(after! corfu-popupinfo
   (setq corfu-popupinfo-delay '(0.3 . 0.2)))
 
 ;; LSP
