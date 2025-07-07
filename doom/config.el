@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set doom-theme' or manually load a theme with the
 ;; load-theme' function. This is the default:
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-gruvbox)
 ;; (setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to nil', line
@@ -98,6 +98,10 @@
       :desc "Search project"
       "g" #'+default/search-project)
 (map! :n "g r" #'+lookup/references)
+(map! :leader :n "f o" #'dired-jump)
+
+(map! :leader :n "TAB h" '+workspace/switch-left)
+(map! :leader :n "TAB l" '+workspace/switch-right)
 
 (load! "repeatable-resize")
 
@@ -113,78 +117,41 @@
 (after! corfu
   (setq corfu-auto-delay 0.001)
   (setq corfu-auto-prefix 1)
-  (setq corfu-preselect 'first))
+  (setq corfu-popupinfo-delay '(0.3 . 0.2)))
 
 ;; LSP
-(use-package! lsp-mode
-  :custom
-  (lsp-restart nil)
-  (lsp-log-io nil)
-  (lsp-auto-guess-root nil)
-  (lsp-enable-links nil)
-  (lsp-enable-on-type-formatting nil)
-  (lsp-modeline-code-actions-enable nil)
-  ;; (lsp-modeline-diagnostics-enable nil)
-  ;; lsp-headerline-breadcrumb-enable t)
-  (lsp-semantic-tokens-enable nil)
-  ;; lsp-enable-folding nil)
-  ;; lsp-enable-imenu nil)
-  (lsp-enable-snippet nil)
-  (lsp-ui-sideline-mode nil)
-  (lsp-ui-sideline-show-diagnostics nil)
-  (lsp-completion-show-kind t)
-  (lsp-completion-show-detail t)
-  (lsp-signature-render-documentation nil)
-  (lsp-lens-enable t)
-  (lsp-inlay-hint-enable nil)
-  (lsp-ui-doc-enable t)
-  (lsp-ui-doc-show-with-cursor nil)
-  (lsp-ui-doc-show-with-mouse 't)
-  (lsp-enable-symbol-highlighting nil)
-  ;; (lsp-headerline-breadcrumb-enable t)
-  ;; (lsp-headerline-breadcrumb-segments '(project file symbols))
-  (lsp-use-plists t)
-  (lsp-enable-file-watchers nil)
-  (read-process-output-max (* 8 1024 1024)) ;; 3MB)
-  (lsp-idle-delay 0.010)
-  (lsp-completion-provider :none)
-  ;; (lsp-diagnostics-provider :flymake)
-  (lsp-disabled-clients '(vue-semantic-server volar-api volar-html volar-doc semgrep-ls emmet-ls))
-  (lsp-eldoc-enable-hover nil)
+(setq global-eldoc-mode nil)
+(defun lsp-booster--advice-json-parse (old-fn &rest args)
+  "Try to parse bytecode instead of json."
+  (or
+   (when (equal (following-char) ?#)
+     (let ((bytecode (read (current-buffer))))
+       (when (byte-code-function-p bytecode)
+         (funcall bytecode))))
+   (apply old-fn args)))
+(advice-add (if (progn (require 'json)
+                       (fboundp 'json-parse-buffer))
+                'json-parse-buffer
+              'json-read)
+            :around
+            #'lsp-booster--advice-json-parse)
 
-  :init
-  (defun lsp-booster--advice-json-parse (old-fn &rest args)
-    "Try to parse bytecode instead of json."
-    (or
-     (when (equal (following-char) ?#)
-       (let ((bytecode (read (current-buffer))))
-         (when (byte-code-function-p bytecode)
-           (funcall bytecode))))
-     (apply old-fn args)))
-  (advice-add (if (progn (require 'json)
-                         (fboundp 'json-parse-buffer))
-                  'json-parse-buffer
-                'json-read)
-              :around
-              #'lsp-booster--advice-json-parse)
+(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+  "Prepend emacs-lsp-booster command to lsp CMD."
+  (let ((orig-result (funcall old-fn cmd test?)))
+    (if (and (not test?)                             ;; for check lsp-server-present?
+             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
+             lsp-use-plists
+             (not (functionp 'json-rpc-connection))  ;; native json-rpc
+             (executable-find "emacs-lsp-booster"))
+        (progn
+          (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+            (setcar orig-result command-from-exec-path))
+          (message "Using emacs-lsp-booster for %s!" orig-result)
+          (cons "emacs-lsp-booster" orig-result))
+      orig-result)))
+(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-  (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
-    "Prepend emacs-lsp-booster command to lsp CMD."
-    (let ((orig-result (funcall old-fn cmd test?)))
-      (if (and (not test?) ;; for check lsp-server-present?
-               (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
-               lsp-use-plists
-               (not (functionp 'json-rpc-connection)) ;; native json-rpc
-               (executable-find "emacs-lsp-booster"))
-          (progn
-            (when-let ((command-from-exec-path (executable-find (car orig-result)))) ;; resolve command from exec-path (in case not found in $PATH)
-              (setcar orig-result command-from-exec-path))
-            (message "Using emacs-lsp-booster for %s!" orig-result)
-            (cons "emacs-lsp-booster" orig-result))
-        orig-result)))
-  (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
-  )
 
 (custom-set-faces
  '(tree-sitter-hl-face:property ((t (:inherit font-lock-constant-face)))))
-
