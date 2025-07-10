@@ -35,9 +35,39 @@
    nil
    repeatable-resize-timeout))
 
+(defun +my/repeatable-increase-window-height ()
+  "Repeatable enlarge window vertically."
+  (interactive)
+  (evil-window-increase-height 5)
+  (set-transient-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "-") #'+my/repeatable-decrease-window-height)
+     (define-key map (kbd "+") #'+my/repeatable-increase-window-height)
+     map)
+   nil
+   nil
+   nil
+   repeatable-resize-timeout))
+
+(defun +my/repeatable-decrease-window-height ()
+  "Repeatable enlarge window vertically."
+  (interactive)
+  (evil-window-decrease-height 5)
+  (set-transient-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "-") #'+my/repeatable-decrease-window-height)
+     (define-key map (kbd "+") #'+my/repeatable-increase-window-height)
+     map)
+   nil
+   nil
+   nil
+   repeatable-resize-timeout))
+
 (map! :prefix "C-w"
       :n "<" #'+my/repeatable-shrink-window-horizontally
-      :n ">" #'+my/repeatable-enlarge-window-horizontally)
+      :n ">" #'+my/repeatable-enlarge-window-horizontally
+      :n "+" #'+my/repeatable-increase-window-height
+      :n "-" #'+my/repeatable-decrease-window-height)
 
 (provide 'repeatable-resize)
 ;;; repeatable-resize.el ends here
