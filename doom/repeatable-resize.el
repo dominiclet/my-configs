@@ -57,7 +57,7 @@
    (let ((map (make-sparse-keymap)))
      (define-key map (kbd "-") #'+my/repeatable-decrease-window-height)
      (define-key map (kbd "+") #'+my/repeatable-increase-window-height)
-     map)
+        map)
    nil
    nil
    nil

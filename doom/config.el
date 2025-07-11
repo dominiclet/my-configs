@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set doom-theme' or manually load a theme with the
 ;; load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-moonlight)
 ;; (setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to nil', line
@@ -137,7 +137,9 @@
 
 (after! corfu
   (setq corfu-auto-delay 0.001)
-  (setq corfu-auto-prefix 1))
+  (setq corfu-auto-prefix 1)
+  (setq corfu-preview-current nil)
+  (setq corfu-preselect 'first))
 
 (after! corfu-popupinfo
   (setq corfu-popupinfo-delay '(0.3 . 0.2)))
