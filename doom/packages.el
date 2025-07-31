@@ -50,3 +50,4 @@
 ;; (unpin! t)
 
 (package! harpoon)
+(package! blamer)

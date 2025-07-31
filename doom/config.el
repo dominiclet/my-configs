@@ -111,6 +111,7 @@
       "g" #'+default/search-project)
 (map! :n "g r" #'+lookup/references)
 (map! :n "g i" #'+lookup/definition)
+(map! :leader :n "g b" #'blamer-mode)
 (map! :leader :n "f o" #'dired-jump)
 
 (map! :leader :n "TAB h" '+workspace/switch-left)
