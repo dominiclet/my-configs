@@ -137,16 +137,15 @@
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 (after! corfu
-  (setq corfu-auto-delay 0.001)
+  (setq corfu-auto-delay 0.5)
   (setq corfu-auto-prefix 1)
   (setq corfu-preview-current nil)
-  (setq corfu-preselect 'first))
+  (setq corfu-preselect 'first)
+  (map! :map corfu-map :i "TAB" nil)
+  (map! :map corfu-map :i "<tab>" nil))
 
 (after! corfu-popupinfo
   (setq corfu-popupinfo-delay '(0.3 . 0.2)))
-
-(after! company
-  (setq company-idle-delay 0.001))
 
 ;; LSP
 (setq global-eldoc-mode nil)
