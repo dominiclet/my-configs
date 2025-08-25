@@ -24,7 +24,7 @@ return {
                     vim.lsp.buf.signature_help({ border = 'single' })
                 end, opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-                vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
+                vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
             end
         })
@@ -55,11 +55,13 @@ return {
 
         vim.lsp.config("gopls", { capabilities = capabilities })
         vim.lsp.config("ts_ls", { capabilities = capabilities })
+        vim.lsp.config("rust_analyzer", { capabilities = capabilities })
 
 
         vim.lsp.enable("lua_ls")
         vim.lsp.enable('gopls')
         vim.lsp.enable('ts_ls')
+        vim.lsp.enable('rust_analyzer')
 
         vim.diagnostic.config({
             virtual_text = true,
