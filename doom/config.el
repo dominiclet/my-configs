@@ -131,10 +131,10 @@
 ;;(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 12 :weight 'semi-light)
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;; JetBrainsMonoNL Nerd Font Mono
-(setq doom-font (font-spec :family "JetBrainsMonoNL Nerd Font Mono" :size 24))
+(setq doom-font (font-spec :family "JetBrainsMonoNL Nerd Font Mono" :size 16))
 
 ;; Enable treesitter
-(global-tree-sitter-mode)
+;; (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 (after! corfu
