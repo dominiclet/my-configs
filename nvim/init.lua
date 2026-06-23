@@ -15,6 +15,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(args) pcall(vim.treesitter.start, args.buf) end,
+})
+
 require("lazy").setup("plugins")
 require("general-preferences")
 require("resize")
