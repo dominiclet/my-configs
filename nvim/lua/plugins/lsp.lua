@@ -23,6 +23,7 @@ return {
                 vim.keymap.set({ 'n', 'i' }, '<C-l>', function ()
                     vim.lsp.buf.signature_help({ border = 'single' })
                 end, opts)
+                vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "go to references", nowait = true })
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
                 vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
