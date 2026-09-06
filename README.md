@@ -14,3 +14,7 @@ Requires:
 
 Treesitter install:
 - Run `:TSInstall {language}`
+
+## Tmux
+
+- Clone https://github.com/egel/tmux-gruvbox into config directory for theme
