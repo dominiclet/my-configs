@@ -57,6 +57,11 @@ return {
         fuzzy = { implementation = "prefer_rust_with_warning" },
 
         cmdline = {
+            keymap = {
+                preset = 'default',
+                ['<C-j>'] = { 'select_next', 'fallback' },
+                ['<C-k>'] = { 'select_prev', 'fallback' },
+            },
             completion = { menu = { auto_show = true }}
         }
     },

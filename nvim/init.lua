@@ -22,3 +22,4 @@ vim.api.nvim_create_autocmd('FileType', {
 require("lazy").setup("plugins")
 require("general-preferences")
 require("resize")
+require("copy-path")
