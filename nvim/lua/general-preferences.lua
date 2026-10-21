@@ -28,7 +28,7 @@ function map(mode, shortcut, command)
 end
 
 -- Remove search highlighting
-map('n', '<C-;>', '<cmd>nohl<cr>')
+map('n', '<C-n>', '<cmd>nohl<cr>')
 -- Tab navigation
 map('n', 'te', '<cmd>tab split<cr>')
 map('n', 'tn', '<cmd>tabnext<cr>')
